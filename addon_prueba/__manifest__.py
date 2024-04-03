@@ -2,6 +2,8 @@
     'name': 'addon_prueba',
     'version': '1.0.0',
     'category': 'Sin Categoría',
+    'sequence': -100,
+    'author': 'nico',
     'summary': 'Este es mi primer addon',
     'description': 'Este es mi primer addon',
     'depends': [],  # Por ahora no depende de ningún módulo externo
