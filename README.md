@@ -7,3 +7,5 @@ En este orden:
 
 Y de ahí en más usas esta:
 ./odoo-bin -c ../proyecto-odoo/odoo.conf 
+
+https://github.com/nicoMoroni348/primeros-addons.git
