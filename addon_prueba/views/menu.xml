@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_personas"
+              name="Personas"
+              sequence="0"
+    />
+
+    <menuitem id="menu_estados"
+              parent="menu_personas"
+              name="Estados"
+              sequence="0"
+    />
+
+
+
+</odoo>
