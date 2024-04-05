@@ -9,6 +9,7 @@
     'description': 'Este es mi primer addon',
     'depends': [],  # Por ahora no depende de ningún módulo externo
     'data': [
+        'security/ir.model.access.csv',
         'views/menu.xml',
         'views/persona_view.xml',
     ],
