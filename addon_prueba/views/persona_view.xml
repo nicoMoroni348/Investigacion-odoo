@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_persona" model="ir.actions.act_window"> <!-- la accion es action_persona -->
+        <field name="name">Personas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">persona</field> <!-- Aca acordate que tenes que poner
+                                              el nombre exacto que definiste en el models-->
+
+        <field name="view_mode">tree,form</field> <!-- acá especificas las diferentes vistas que va a tener -->
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Todavía no creaste ninguna persona!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_legales"
+              parent="menu_estados"
+              name="Legales"
+              sequence="0"
+              action="action_persona"
+    />
+
+</odoo>
