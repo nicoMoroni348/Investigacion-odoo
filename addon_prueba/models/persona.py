@@ -1,5 +1,6 @@
 from odoo import api, fields, models
 
+
 class Persona(models.Model):
     _name = 'persona'
     _description = 'Este es mi primer modelo'
