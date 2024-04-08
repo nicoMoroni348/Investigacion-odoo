@@ -3,7 +3,7 @@
     <menuitem id="menu_personas"
               name="Personas"
               sequence="0"
-              web_icon="addon_prueba,static/description/cids.png"
+              web_icon="addon_prueba,static/description/arg.png"
     />
 
     <menuitem id="menu_estados"

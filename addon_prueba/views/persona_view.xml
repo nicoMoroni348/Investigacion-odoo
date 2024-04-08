@@ -15,7 +15,12 @@
                                                                     <!-- acá por alguna razón si pongo hombre en minúscula no me lo acepta-->
                  <!-- <separator/> esta etiqueta evita que cuando toques los 2 filtros a la vez, se aplique un OR, sino que se aplica un AND -->
                 <filter name="filtro_mujeres" string="Mujeres" help="Filtrado por mujeres" domain="[('gender', '=', 'Mujer')]"/>
+
+                <separator/>
                 <filter name="filtro_niños" string="Niños" help="Filtrado por edad menor o igual a 5" domain="[('age', '&lt;=', 5)]"/>
+
+                <separator/>
+                <filter name="filtro_archivados" string="Personas inactivas" help="Muestra personas en estado INactivo" domain="[('active', '=', False)]"/>
 
                 <!-- Sintaxis para añadir un group by-->
                 <group expand="0" string="Group By">
@@ -35,6 +40,7 @@
                 <field name="name" string="Nombre de la persona"/> <!-- si no pones nada usa el del modelo (Nombre) -->
                 <field name="age"/>
                 <field name="gender"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
@@ -53,6 +59,7 @@
                         </group>
                         <group>
                             <field name="gender"></field>
+                            <field name="active" invisible="1"></field>
                         </group>
                     </group>
                 </sheet>
