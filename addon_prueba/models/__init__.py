@@ -1,1 +1,1 @@
-from . import persona
+from . import persona, oportunidad
