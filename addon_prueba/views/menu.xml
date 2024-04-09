@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_personas"
-              name="Personas"
+    <menuitem id="menu_prueba"
+              name="Primer Módulo"
               sequence="0"
               web_icon="addon_prueba,static/description/arg.png"
     />
 
-    <menuitem id="menu_estados"
-              parent="menu_personas"
-              name="Estados"
+    <menuitem id="menu_detalle_personas"
+              parent="menu_prueba"
+              name="Detalle Personas"
               sequence="0"
     />
 

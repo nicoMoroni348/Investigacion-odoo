@@ -83,9 +83,9 @@
         </field>
     </record>
 
-    <menuitem id="menu_legales"
-              parent="menu_estados"
-              name="Legales"
+    <menuitem id="menu_personas"
+              parent="menu_detalle_personas"
+              name="Personas"
               sequence="0"
               action="action_persona"
     />
