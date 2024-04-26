@@ -10,21 +10,26 @@
                 <field name="gender"/>
 
                 <!-- FILTROS-->
-                <filter name="filtro_hombres" string="Hombres" help="Filtrado por hombres" domain="[('gender', '=', 'Hombre')]"/>
-                                                                    <!-- El domain es el que realiza el filtro-->
-                                                                    <!-- acá por alguna razón si pongo hombre en minúscula no me lo acepta-->
-                 <!-- <separator/> esta etiqueta evita que cuando toques los 2 filtros a la vez, se aplique un OR, sino que se aplica un AND -->
-                <filter name="filtro_mujeres" string="Mujeres" help="Filtrado por mujeres" domain="[('gender', '=', 'Mujer')]"/>
+                <filter name="filtro_hombres" string="Hombres" help="Filtrado por hombres"
+                        domain="[('gender', '=', 'Hombre')]"/>
+                <!-- El domain es el que realiza el filtro-->
+                <!-- acá por alguna razón si pongo hombre en minúscula no me lo acepta-->
+                <!-- <separator/> esta etiqueta evita que cuando toques los 2 filtros a la vez, se aplique un OR, sino que se aplica un AND -->
+                <filter name="filtro_mujeres" string="Mujeres" help="Filtrado por mujeres"
+                        domain="[('gender', '=', 'Mujer')]"/>
 
                 <separator/>
-                <filter name="filtro_niños" string="Niños" help="Filtrado por edad menor o igual a 5" domain="[('age', '&lt;=', 5)]"/>
+                <filter name="filtro_niños" string="Niños" help="Filtrado por edad menor o igual a 5"
+                        domain="[('age', '&lt;=', 5)]"/>
 
                 <separator/>
-                <filter name="filtro_archivados" string="Personas inactivas" help="Muestra personas en estado INactivo" domain="[('active', '=', False)]"/>
+                <filter name="filtro_archivados" string="Personas inactivas" help="Muestra personas en estado INactivo"
+                        domain="[('active', '=', False)]"/>
 
                 <!-- Sintaxis para añadir un group by-->
                 <group expand="0" string="Group By">
-                    <filter string="Género" name="group_by_genero" help="Agrupación por generos" context="{'group_by':'gender'}"/>
+                    <filter string="Género" name="group_by_genero" help="Agrupación por generos"
+                            context="{'group_by':'gender'}"/>
                 </group>
 
             </search>
@@ -37,6 +42,7 @@
         <field name="model">persona</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="id"/>
                 <field name="name" string="Nombre de la persona"/> <!-- si no pones nada usa el del modelo (Nombre) -->
                 <field name="age"/>
                 <field name="gender"/>
@@ -63,6 +69,11 @@
                         </group>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
             </form>
         </field>
     </record>
@@ -75,7 +86,7 @@
                                               el nombre exacto que definiste en el models-->
 
         <field name="view_mode">tree,form</field> <!-- acá especificas las diferentes vistas que va a tener -->
-        <field name="context">{}</field>
+        <field name="context">{'search_default_group_by_genero': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Todavía no creaste ninguna persona!
