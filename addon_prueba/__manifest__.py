@@ -7,7 +7,9 @@
     'application': True,
     'summary': 'Este es mi primer addon',
     'description': 'Este es mi primer addon',
-    'depends': ['mail','phone_validation',],  # Por ahora no depende de ningún módulo externo
+    'depends': ['mail',
+                'phone_validation',
+                ],
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',

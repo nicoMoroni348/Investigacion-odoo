@@ -32,6 +32,10 @@
                             context="{'group_by':'gender'}"/>
                 </group>
 
+                <searchpanel>
+                    <field name="gender" enable_counters="1" icon="fa-users"/> <!-- Esto me crea el panel de la
+                                                            izquierda y le puse que me diga la cantidad -->
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -86,7 +90,7 @@
                                               el nombre exacto que definiste en el models-->
 
         <field name="view_mode">tree,form</field> <!-- acá especificas las diferentes vistas que va a tener -->
-        <field name="context">{'search_default_group_by_genero': 1}</field>
+        <field name="context">{}</field> <!-- 'search_default_group_by_genero': 1 -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Todavía no creaste ninguna persona!
@@ -97,7 +101,7 @@
     <menuitem id="menu_personas"
               parent="menu_detalle_personas"
               name="Personas"
-              sequence="0"
+              sequence="1"
               action="action_persona"
     />
 

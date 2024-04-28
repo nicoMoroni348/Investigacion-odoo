@@ -1,12 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="view_oportunidad_search" model="ir.ui.view">
+        <field name="name">oportunidad.search</field>
+        <field name="model">oportunidad</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="custom_id"/>
+                <field name="descripcion"/>
+                <field name="estado"/>
+                <field name="persona_id"/>
+                <field name="fecha_oportunidad"/>
+
+                <!-- FILTROS-->
+                <filter name="filtro_finalizada" string="Finalizada" help="Filtrado por estado finalizado"
+                        domain="[('estado', '=', 'Finalizada')]"/>
+
+                <!-- Sintaxis para añadir un group by-->
+                <group expand="0" string="Group By">
+                    <filter string="Estado" name="group_by_estado" help="Agrupación por estados"
+                            context="{'group_by':'estado'}"/>
+                </group>
+
+                <searchpanel>
+                    <field name="estado" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="view_oportunidad_tree" model="ir.ui.view">
+        <field name="name">oportunidad.tree</field>
+        <field name="model">oportunidad</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="custom_id"/>
+                <field name="descripcion"/>
+                <field name="estado"/>
+                <field name="persona_id"/>
+                <field name="fecha_oportunidad"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_oportunidad_form" model="ir.ui.view">
+        <field name="name">oportunidad.form</field>
+        <field name="model">oportunidad</field>
+        <field name="arch" type="xml">
+            <form> <!-- en base a esto odoo determina el tipo de vista, acá si ponés tree, va a ser tree. -->
+                <sheet>
+                    <h1>INGRESE LOS DATOS</h1>
+                    <group>
+                        <group>
+                            <field name="custom_id" readonly="False"/>
+                            <field name="descripcion"/>
+                            <field name="fecha_oportunidad"/>
+                        </group>
+                        <group>
+                            <field name="estado" default="nueva"/>
+                            <field name="persona_id"/>
+                            <field name="persona_genero"/>
+                        </group>
+                        <group string="Coordenadas" style="font-size: 12px; color: #666;">
+                            <field name="latitud" label="Latitud" style="width: 100px;"/>
+                            <field name="longitud" label="Longitud" style="width: 100px;"/>
+                        </group>
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
 
     <record id="action_oportunidades" model="ir.actions.act_window">
         <field name="name">Oportunidades</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">oportunidad</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{}</field>
+        <field name="context">{}</field> <!-- 'search_default_group_by_estado': 1 -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Todavía no creaste ninguna Oportunidad!
@@ -17,7 +91,7 @@
     <menuitem id="menu_oportunidades_detalle"
               parent="menu_oportunidades"
               name="Oportunidades"
-              sequence="1"
+              sequence="0"
               action="action_oportunidades"
     />
 

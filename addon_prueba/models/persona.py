@@ -9,7 +9,7 @@ class Persona(models.Model):
                 ]  # esto lo agrego para el chatter
     _description = 'Este es mi primer modelo'
 
-    name = fields.Char(string='Nombre', required=True)
+    name = fields.Char(string='Nombre', required=True, tracking=True)
     age = fields.Integer(string='Edad', required=False)
     gender = fields.Selection([('Hombre', 'hombre'), ('Mujer', 'mujer'), ('Otro', 'otro')], string='Genero',
                               required=True)
