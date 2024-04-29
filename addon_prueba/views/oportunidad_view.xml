@@ -60,7 +60,7 @@
                         <group>
                             <field name="estado" default="nueva"/>
                             <field name="persona_id"/>
-                            <field name="persona_genero"/>
+                            <field name="persona_genero" readonly="False"/>
                         </group>
                         <group string="Coordenadas" style="font-size: 12px; color: #666;">
                             <field name="latitud" label="Latitud" style="width: 100px;"/>
