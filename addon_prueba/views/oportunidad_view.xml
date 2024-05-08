@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <search>
                 <field name="custom_id"/>
-                <field name="descripcion"/>
                 <field name="estado"/>
                 <field name="persona_id"/>
                 <field name="fecha_oportunidad"/>
@@ -37,7 +36,6 @@
                 <field name="id"/>
                 <field name="custom_id"/>
                 <field name="ref"/>
-                <field name="descripcion"/>
                 <field name="estado"/>
                 <field name="persona_id"/>
                 <field name="fecha_oportunidad"/>
@@ -55,7 +53,6 @@
                     <group>
                         <group>
                             <field name="custom_id" readonly="False"/>
-                            <field name="descripcion"/>
                             <field name="fecha_oportunidad"/>
                         </group>
                         <group>
@@ -72,6 +69,22 @@
                         </group>
 
                     </group>
+
+                    <!-- Agregar la página de la vista de árbol de persona -->
+                    <notebook>
+
+                        <page string="Personas" name="personas">
+                            <field name="persona_id"/>
+                            <field name="persona_genero" readonly="False"/>
+                        </page>
+
+                        <page string="Descripción" name="descripcion">
+                            <field name="descripcion" placeholder="Ingrese la descripción de la oportunidad"/>
+                        </page>
+
+                    </notebook>
+
+
                 </sheet>
 
             </form>
