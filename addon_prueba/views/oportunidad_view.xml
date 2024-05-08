@@ -36,6 +36,7 @@
             <tree>
                 <field name="id"/>
                 <field name="custom_id"/>
+                <field name="ref"/>
                 <field name="descripcion"/>
                 <field name="estado"/>
                 <field name="persona_id"/>
@@ -65,6 +66,9 @@
                         <group string="Coordenadas" style="font-size: 12px; color: #666;">
                             <field name="latitud" label="Latitud" style="width: 100px;"/>
                             <field name="longitud" label="Longitud" style="width: 100px;"/>
+                        </group>
+                        <group>
+                            <field name="ref"/>
                         </group>
 
                     </group>

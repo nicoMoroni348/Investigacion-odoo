@@ -17,6 +17,8 @@ class Persona(models.Model):
                               required=True)
     active = fields.Boolean(string="Activo", default=True)
     email = fields.Char(string='Correo Electrónico', required=True)
+    ref = fields.Char(string='Referencia')
+    oportunidad_id = fields.Many2one('oportunidad', string="Oportunidad")
 
     @api.depends('fecha_nacimiento')
     def _compute_age(self):
