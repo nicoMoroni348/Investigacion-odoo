@@ -16,6 +16,8 @@
         'views/persona_view.xml',
         'views/oportunidad_view.xml',
         'views/persona_mujer_view.xml',
+        'report/oportunidad_report.xml',
+        'report/oportunidad_template.xml',
     ],
     'demo': [],
     'installable': True,

@@ -1,0 +1,26 @@
+<odoo>
+    <template id="oportunidad_report"> <!-- Acá va el nombre que especificaste en el reporte -->
+        <t t-call="web.html_container"> <!-- Acá va la vista predefinida -->
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>CONTRATO COMERCIAL PARA LA PRESTACIÓN DE SERVICIOS SOBRE LA RED
+                        DIGITAL CÓRDOBA
+                    </h1>
+                    <p>En la ciudad de Córdoba, a los 12 días del mes de abril del año 2024, convienen celebrar el
+                        presente contrato para la Prestación de Servicios sobre la RED DIGITAL CÓRDOBA, en
+                        adelante el “CONTRATO”, por una parte, la AGENCIA CONECTIVIDAD CÓRDOBA SOCIEDAD
+                        DEL ESTADO, CUIT 30-71715590-0, en adelante “LA AGENCIA”, con domicilio en 27 DE
+                        ABRIL, Nº 172, 4° Piso, Ciudad de Córdoba, Provincia de Córdoba, y por la otra
+                        parte, SALDE MOISES LUIS, CUIT N° 20-16856043-6, en adelante el “EL CLIENTE”, con
+                        domicilio en calle Margot Huber, N° 539, de la ciudad de Las Peñas, Provincia de Córdoba;
+                        representada por los firmantes al pie del presente CONTRATO, declarando que cuentan
+                        con facultades suficientes para otorgar el presente acto; en adelante también denominados
+                        en forma individual e indistintamente como “LA PARTE” y en forma conjunta como “LAS
+                        PARTES”, el cual se regirá por las siguientes cláusulas.
+                    </p>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
