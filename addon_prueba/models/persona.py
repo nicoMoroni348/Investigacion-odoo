@@ -27,7 +27,7 @@ class Persona(models.Model):
             if rec.fecha_nacimiento:
                 rec.age = hoy.year - rec.fecha_nacimiento.year
             else:
-                rec.age = 0
+                rec.age = 1
 
     @api.depends('email')
     def _compute_email_normalized(self):

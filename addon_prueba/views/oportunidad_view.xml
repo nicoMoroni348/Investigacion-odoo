@@ -12,7 +12,7 @@
 
                 <!-- FILTROS-->
                 <filter name="filtro_finalizada" string="Finalizada" help="Filtrado por estado finalizado"
-                        domain="[('estado', '=', 'Finalizada')]"/>
+                        domain="[('estado', '=', 'finalizada')]"/>
 
                 <!-- Sintaxis para añadir un group by-->
                 <group expand="0" string="Group By">
@@ -32,11 +32,18 @@
         <field name="name">oportunidad.tree</field>
         <field name="model">oportunidad</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree   decoration-success="estado == 'finalizada'"
+                    decoration-danger="estado == 'cancelada'">
                 <field name="id"/>
                 <field name="custom_id"/>
+                <field name="estado"
+                       widget="badge"
+                       decoration-success="estado == 'finalizada'"
+                       decoration-info="estado == 'nueva'"
+                       decoration-muted="estado == 'en_proceso'"
+                       decoration-danger="estado == 'cancelada'"
+                       decoration-warning="estado == 'suspendida'"/>
                 <field name="ref"/>
-                <field name="estado"/>
                 <field name="persona_id"/>
                 <field name="fecha_oportunidad"/>
             </tree>
@@ -48,8 +55,22 @@
         <field name="model">oportunidad</field>
         <field name="arch" type="xml">
             <form> <!-- en base a esto odoo determina el tipo de vista, acá si ponés tree, va a ser tree. -->
+                <header>
+                    <field name="estado" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
+                           statusbar_visible="nueva, en_proceso, finalizada"/> <!-- No se muestra ni suspendida, ni cancelada -->
+                    <button name="cancelar_oportunidad"
+                            confirm="Estas seguro de que quieres cancelar la oportunidad?"
+                            help="Al clickear se cancelará la oportunidad"
+                            type="object" string="Cancelar oportunidad" class="oe_highlight"/>
+                    <button name="suspender_oportunidad"
+                            confirm="Estas seguro de que quieres suspender la oportunidad?"
+                            help="Al clickear se suspenderá la oportunidad"
+                            type="object" string="Suspender oportunidad" />
+                </header>
                 <sheet>
                     <h1>INGRESE LOS DATOS</h1>
+                    <div style="border: 0; height: 6px; background: linear-gradient(to right, #5cadff, #2a5298); margin: 20px 0; border-radius: 5px;">
+                    </div>
                     <p/>
                     <group>
                         <group>
@@ -58,7 +79,6 @@
                             <field name="prioridad" widget="priority"/>
                         </group>
                         <group>
-                            <field name="estado" default="nueva"/>
                             <field name="persona_id"/>
                             <field name="persona_genero" readonly="False"/>
                         </group>
@@ -68,7 +88,16 @@
                         </group>
                         <group>
                             <field name="ref"/>
-                        </group><p/>
+                            <button name="action_test"
+                                    confirm="Estas seguro de ejecutar el código de python?"
+                                    help="Al clickear se hará un print en la consola y mostrará un arcoíris"
+                                    type="object" string="Boton objeto" class="oe_highlight"/>
+                            <button name="%(addon_prueba.action_persona)d"
+                                    confirm="Estas seguro de ir a la acción persona?"
+                                    help="Al clickear te dirigirás a la lista de personas"
+                                    type="action" string="Boton accion"/>
+                        </group>
+                        <p/>
 
                     </group>
 

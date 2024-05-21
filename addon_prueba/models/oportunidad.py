@@ -5,14 +5,42 @@ class Oportunidad(models.Model):
     _description = 'Oportunidad'
     _rec_name = 'custom_id'
 
-    custom_id = fields.Char(string="ID Oportunidad", required=True)
-    descripcion = fields.Html(string="Descripcion")
-    estado = fields.Selection([('Nueva', 'Nueva'), ('En proceso', 'En proceso'), ('Finalizada', 'Finalizada')], string="Estado", default="Nueva")
-    persona_id = fields.Many2one('persona', string="Contacto asociado")
-    persona_genero = fields.Selection(related="persona_id.gender")
+    custom_id = fields.Char(
+        string="ID Oportunidad",
+        required=True
+    )
 
-    fecha_oportunidad = fields.Date(string="Fecha", default=fields.Date.context_today) # Datetime.now también funca
-    ref = fields.Char(string='Referencia')
+    descripcion = fields.Html(
+        string="Descripcion"
+    )
+
+    estado = fields.Selection([
+        ('nueva', 'Nueva'),
+        ('en_proceso', 'En proceso'),
+        ('finalizada', 'Finalizada'),
+        ('suspendida', 'Suspendida'),
+        ('cancelada', 'Cancelada')
+    ], string="Estado", default="nueva", required=True)
+
+    persona_id = fields.Many2one(
+        'persona',
+        string="Contacto asociado"
+    )
+
+    persona_genero = fields.Selection(
+        related="persona_id.gender"
+    )
+
+    fecha_oportunidad = fields.Date(
+        string="Fecha",
+        default=fields.Date.context_today  # Datetime.now también funca
+    )
+
+    ref = fields.Char(
+        string='Ref',
+        help='Referencia de la persona',
+        related="persona_id.ref"
+    )
 
     prioridad = fields.Selection([
         ("0", "Normal"),
@@ -30,3 +58,19 @@ class Oportunidad(models.Model):
     def onchange_persona_id(self):
         self.ref = self.persona_id.ref # Rellena el código pero no de la misma forma que el many2one,
                                         # este lo autocompleta de forma más personalizada
+
+    def action_test(self):
+        print("TEST CORRECTO")
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'message': 'Apretaste un botón :)',
+                'type': 'rainbow_man'
+            }
+        }
+
+    def cancelar_oportunidad(self):
+        self.estado = 'cancelada'
+
+    def suspender_oportunidad(self):
+        self.estado = 'suspendida'
