@@ -55,6 +55,7 @@
                         <group>
                             <field name="custom_id" readonly="False"/>
                             <field name="fecha_oportunidad"/>
+                            <field name="prioridad" widget="priority"/>
                         </group>
                         <group>
                             <field name="estado" default="nueva"/>

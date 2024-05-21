@@ -14,6 +14,13 @@ class Oportunidad(models.Model):
     fecha_oportunidad = fields.Date(string="Fecha", default=fields.Date.context_today) # Datetime.now también funca
     ref = fields.Char(string='Referencia')
 
+    prioridad = fields.Selection([
+        ("0", "Normal"),
+        ("1", "Baja"),
+        ("2", "Media"),
+        ("3", "Alta"),
+        ("4", "Muy alta")
+    ], string="Prioridad")
 
     # Para lo de google maps
     latitud = fields.Float(string="Latitud")
