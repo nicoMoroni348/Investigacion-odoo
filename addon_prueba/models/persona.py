@@ -29,13 +29,13 @@ class Persona(models.Model):
             else:
                 rec.age = 1
 
-    @api.depends('email')
-    def _compute_email_normalized(self):
-        for record in self:
-            if record.email:
-                # Realiza la normalización del correo electrónico aquí
-                normalized_email = record.email.lower()  # Por ejemplo, convierte a minúsculas
-                record.email_normalized = normalized_email
-            else:
-                record.email_normalized = False
+    # @api.depends('email')
+    # def _compute_email_normalized(self):
+    #     for record in self:
+    #         if record.email:
+    #             # Realiza la normalización del correo electrónico aquí
+    #             normalized_email = record.email.lower()  # Por ejemplo, convierte a minúsculas
+    #             record.email_normalized = normalized_email
+    #         else:
+    #             record.email_normalized = False
 

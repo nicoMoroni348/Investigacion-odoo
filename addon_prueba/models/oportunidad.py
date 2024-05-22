@@ -2,6 +2,7 @@ from odoo import models, fields, api
 
 class Oportunidad(models.Model):
     _name = 'oportunidad'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Oportunidad'
     _rec_name = 'custom_id'
 

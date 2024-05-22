@@ -32,8 +32,8 @@
         <field name="name">oportunidad.tree</field>
         <field name="model">oportunidad</field>
         <field name="arch" type="xml">
-            <tree   decoration-success="estado == 'finalizada'"
-                    decoration-danger="estado == 'cancelada'">
+            <tree decoration-success="estado == 'finalizada'"
+                  decoration-danger="estado == 'cancelada'">
                 <field name="id"/>
                 <field name="custom_id"/>
                 <field name="estado"
@@ -65,7 +65,7 @@
                     <button name="suspender_oportunidad"
                             confirm="Estas seguro de que quieres suspender la oportunidad?"
                             help="Al clickear se suspenderá la oportunidad"
-                            type="object" string="Suspender oportunidad" />
+                            type="object" string="Suspender oportunidad"/>
                 </header>
                 <sheet>
                     <h1>INGRESE LOS DATOS</h1>
@@ -116,8 +116,13 @@
 
                     </notebook>
 
-
                 </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
 
             </form>
         </field>
