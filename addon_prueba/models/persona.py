@@ -16,9 +16,10 @@ class Persona(models.Model):
     gender = fields.Selection([('Hombre', 'hombre'), ('Mujer', 'mujer'), ('Otro', 'otro')], string='Genero',
                               required=True)
     active = fields.Boolean(string="Activo", default=True)
-    email = fields.Char(string='Correo Electrónico', required=True)
+    email = fields.Char(string='Correo Electrónico')
     ref = fields.Char(string='Referencia')
     oportunidad_id = fields.Many2one('oportunidad', string="Oportunidad")
+    foto = fields.Image(string="Foto")
 
     @api.depends('fecha_nacimiento')
     def _compute_age(self):

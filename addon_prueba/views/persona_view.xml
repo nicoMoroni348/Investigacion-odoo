@@ -66,17 +66,19 @@
             <form> <!-- en base a esto odoo determina el tipo de vista, acá si ponés tree, va a ser tree. -->
                 <sheet>
                     <h1>INGRESE LOS DATOS</h1>
+                    <p/>
+                    <field name="foto" widget="image" class="oe_avatar"/>
                     <group>
                         <group>
-                            <field name="name"></field>
-                            <field name="fecha_nacimiento"></field>
-                            <field name="age"></field>
+                            <field name="name"/>
+                            <field name="fecha_nacimiento"/>
+                            <field name="age"/>
                         </group>
                         <group>
-                            <field name="gender"></field>
-                            <field name="ref"></field>
-                            <field name="oportunidad_id"></field>
-                            <field name="active" invisible="1"></field>
+                            <field name="gender"/>
+                            <field name="ref"/>
+                            <field name="oportunidad_id"/>
+                            <field name="active" invisible="1"/>
                         </group>
                     </group>
                 </sheet>

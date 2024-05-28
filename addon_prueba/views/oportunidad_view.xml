@@ -33,8 +33,10 @@
         <field name="model">oportunidad</field>
         <field name="arch" type="xml">
             <tree decoration-success="estado == 'finalizada'"
-                  decoration-danger="estado == 'cancelada'">
-                <field name="id"/>
+                  decoration-danger="estado == 'cancelada'"
+                  sample="1"
+                  multi_edit="1">
+                <field name="id" optional="hide"/>
                 <field name="custom_id"/>
                 <field name="estado"
                        widget="badge"
@@ -43,9 +45,11 @@
                        decoration-muted="estado == 'en_proceso'"
                        decoration-danger="estado == 'cancelada'"
                        decoration-warning="estado == 'suspendida'"/>
-                <field name="ref"/>
+                <field name="ref" optional="hide"/>
                 <field name="persona_id"/>
                 <field name="fecha_oportunidad"/>
+                <field name="responsable" widget="many2one_avatar_user"/>
+                <field name="activity_ids" widget="list_activity" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -56,16 +60,25 @@
         <field name="arch" type="xml">
             <form> <!-- en base a esto odoo determina el tipo de vista, acá si ponés tree, va a ser tree. -->
                 <header>
-                    <field name="estado" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
+                    <field name="estado" widget="statusbar" nolabel="1"
                            statusbar_visible="nueva, en_proceso, finalizada"/> <!-- No se muestra ni suspendida, ni cancelada -->
+                    <!--  options="{'clickable': '1'}"  -->
+                    <button name="en_proceso_oportunidad"
+                            help="Al clickear se pondrá en proceso la oportunidad"
+                            type="object" string="En proceso"/>
+                    <button name="finalizar_oportunidad"
+                            help="Al clickear se finalizará la oportunidad"
+                            type="object" string="Finalizar"/>
                     <button name="cancelar_oportunidad"
                             confirm="Estas seguro de que quieres cancelar la oportunidad?"
                             help="Al clickear se cancelará la oportunidad"
-                            type="object" string="Cancelar oportunidad" class="oe_highlight"/>
+                            type="object" string="Cancelar" class="oe_highlight"
+                            data-hotkey="z"/>
                     <button name="suspender_oportunidad"
                             confirm="Estas seguro de que quieres suspender la oportunidad?"
                             help="Al clickear se suspenderá la oportunidad"
-                            type="object" string="Suspender oportunidad"/>
+                            type="object" string="Suspender"/>
+
                 </header>
                 <sheet>
                     <h1>INGRESE LOS DATOS</h1>
@@ -74,7 +87,7 @@
                     <p/>
                     <group>
                         <group>
-                            <field name="custom_id" readonly="False"/>
+                            <field name="custom_id" readonly="False" default_focus="1"/>
                             <field name="fecha_oportunidad"/>
                             <field name="prioridad" widget="priority"/>
                         </group>
@@ -88,14 +101,17 @@
                         </group>
                         <group>
                             <field name="ref"/>
+                            <field name="responsable" widget="many2one_avatar_user"/>
                             <button name="action_test"
                                     confirm="Estas seguro de ejecutar el código de python?"
                                     help="Al clickear se hará un print en la consola y mostrará un arcoíris"
-                                    type="object" string="Boton objeto" class="oe_highlight"/>
+                                    type="object" string="Objeto" class="oe_highlight"/>
                             <button name="%(addon_prueba.action_persona)d"
                                     confirm="Estas seguro de ir a la acción persona?"
                                     help="Al clickear te dirigirás a la lista de personas"
-                                    type="action" string="Boton accion"/>
+                                    type="action" string="Accion"/>
+                            <field name="esconder_campo" />
+                            <!--    groups="base.group_no_one"  ->  para activarlo en modo dev -->
                         </group>
                         <p/>
 
@@ -105,13 +121,29 @@
 
                         <!-- Ventana Descripción en HTML -->
                         <page string="Descripción" name="descripcion">
-                            <field name="descripcion" placeholder="Ingrese la descripción de la oportunidad"/>
+                            <field name="descripcion" placeholder="Ingrese la descripción de la oportunidad"
+                                   options="{'collaborative': true, 'resizable': true}"/> <!-- para que se actualicen los cambios en tiempo real y tenga tamaño editable -->
                         </page>
 
                         <!-- Ventana Personas -> en un futuro implementarlo como un tree -->
-                        <page string="Personas" name="personas">
-                            <field name="persona_id"/>
-                            <field name="persona_genero" readonly="False"/>
+                        <page string="Nodos" name="nodos">
+                            <field name="nodo_lines_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="cantidad"/>
+<!--                                    <field name="precio_unitario" />-->
+                                    <field name="precio_unitario" attrs="{'column_invisible': [('parent.esconder_campo', '=', True)]}"/>
+                                    <field name="precio_final"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="product_id"/>
+                                        <field name="cantidad"/>
+                                        <field name="precio_unitario"/>
+                                        <field name="precio_final"/>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
 
                     </notebook>

@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access.persona,access_persona,addon_prueba.model_persona,base.group_user,1,1,1,1
 access.oportunidad,access_oportunidad,addon_prueba.model_oportunidad,base.group_user,1,1,1,1
+access.nodo.lines,access_nodo_lines,addon_prueba.model_nodo_lines,base.group_user,1,1,1,1

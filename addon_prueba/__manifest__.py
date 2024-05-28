@@ -9,6 +9,7 @@
     'description': 'Este es mi primer addon',
     'depends': ['mail',
                 'phone_validation',
+                'product',
                 ],
     'data': [
         'security/ir.model.access.csv',

@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 
+
 class Oportunidad(models.Model):
     _name = 'oportunidad'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -51,14 +52,23 @@ class Oportunidad(models.Model):
         ("4", "Muy alta")
     ], string="Prioridad")
 
+    responsable = fields.Many2one(
+        'res.users',
+        string="Responsable"
+    )
+
     # Para lo de google maps
     latitud = fields.Float(string="Latitud")
     longitud = fields.Float(string="Longitud")
 
+    # One2Many field
+    nodo_lines_ids = fields.One2many('nodo.lines', 'id_oportunidad', string="Nodos")
+    esconder_campo = fields.Boolean(string="Esconder campo", default=False)
+
     @api.onchange('persona_id')
     def onchange_persona_id(self):
-        self.ref = self.persona_id.ref # Rellena el código pero no de la misma forma que el many2one,
-                                        # este lo autocompleta de forma más personalizada
+        self.ref = self.persona_id.ref  # Rellena el código pero no de la misma forma que el many2one,
+        # este lo autocompleta de forma más personalizada
 
     def action_test(self):
         print("TEST CORRECTO")
@@ -71,7 +81,36 @@ class Oportunidad(models.Model):
         }
 
     def cancelar_oportunidad(self):
-        self.estado = 'cancelada'
+        for rec in self:  # Para evitar el error singleton
+            rec.estado = 'cancelada'
 
     def suspender_oportunidad(self):
-        self.estado = 'suspendida'
+        for rec in self:  # Para evitar el error singleton
+            rec.estado = 'suspendida'
+
+    def en_proceso_oportunidad(self):
+        for rec in self:  # Para evitar el error singleton
+            rec.estado = 'en_proceso'
+
+    def finalizar_oportunidad(self):
+        for rec in self:  # Para evitar el error singleton
+            rec.estado = 'finalizada'
+
+
+class nodoLines(models.Model):
+    _name = "nodo.lines"
+    _description = "Linea de nodos"
+
+    product_id = fields.Many2one('product.product', required=True)
+    cantidad = fields.Integer(string="Cantidad", default=1)
+    precio_unitario = fields.Float(related="product_id.list_price", string="Precio Unitario")
+    precio_final = fields.Float(string="Precio Final", compute="_calcular_precio", store=True)
+    id_oportunidad = fields.Many2one('oportunidad', string="Oportunidad")
+
+    @api.depends('product_id', 'cantidad')
+    def _calcular_precio(self):
+        for rec in self:
+            if rec.product_id:
+                rec.precio_final = rec.cantidad * rec.precio_unitario
+            else:
+                rec.precio_final = 0
