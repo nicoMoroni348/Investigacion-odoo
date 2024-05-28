@@ -1,1 +1,1 @@
-from . import persona, oportunidad
+from . import persona, oportunidad, persona_tag

@@ -19,9 +19,9 @@
                 <filter name="filtro_mujeres" string="Mujeres" help="Filtrado por mujeres"
                         domain="[('gender', '=', 'Mujer')]"/>
 
-<!--                <separator/>-->
-<!--                <filter name="filtro_niños" string="Niños" help="Filtrado por edad menor o igual a 5"-->
-<!--                        domain="[('age', '&lt;=', 5)]"/>-->
+                <!--                <separator/>-->
+                <!--                <filter name="filtro_niños" string="Niños" help="Filtrado por edad menor o igual a 5"-->
+                <!--                        domain="[('age', '&lt;=', 5)]"/>-->
 
                 <separator/>
                 <filter name="filtro_archivados" string="Personas inactivas" help="Muestra personas en estado INactivo"
@@ -55,6 +55,7 @@
                 <field name="gender"/>
                 <field name="oportunidad_id"/>
                 <field name="active"/>
+                <field name="color" widget="color_picker" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -78,6 +79,7 @@
                             <field name="gender"/>
                             <field name="ref"/>
                             <field name="oportunidad_id"/>
+                            <field name="color" widget="color_picker"/>
                             <field name="active" invisible="1"/>
                         </group>
                     </group>

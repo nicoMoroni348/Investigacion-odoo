@@ -15,6 +15,7 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/persona_view.xml',
+        'views/persona_tag_view.xml',
         'views/oportunidad_view.xml',
         'views/persona_mujer_view.xml',
         'report/oportunidad_report.xml',
