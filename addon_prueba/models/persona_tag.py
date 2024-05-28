@@ -5,7 +5,7 @@ class PersonaTag(models.Model):
     _name = 'persona.tag'
     _description = 'Etiqueta de persona'
 
-    nombre = fields.Char(
+    name = fields.Char(
         string="Nombre",
         required=True
     )
@@ -14,7 +14,9 @@ class PersonaTag(models.Model):
         string="Color"
     )
 
-    activo = fields.Boolean(
+    active = fields.Boolean(
         string="Activo",
         default=True
     )
+
+

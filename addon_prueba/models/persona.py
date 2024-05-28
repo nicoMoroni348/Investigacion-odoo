@@ -20,7 +20,10 @@ class Persona(models.Model):
     ref = fields.Char(string='Referencia')
     oportunidad_id = fields.Many2one('oportunidad', string="Oportunidad")
     foto = fields.Image(string="Foto")
-    color = fields.Integer(string="Color")
+
+    tag_ids = fields.Many2many(
+        'persona.tag', string="Tags"
+    )
 
     @api.depends('fecha_nacimiento')
     def _compute_age(self):

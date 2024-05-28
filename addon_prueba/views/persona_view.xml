@@ -55,7 +55,6 @@
                 <field name="gender"/>
                 <field name="oportunidad_id"/>
                 <field name="active"/>
-                <field name="color" widget="color_picker" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -79,7 +78,7 @@
                             <field name="gender"/>
                             <field name="ref"/>
                             <field name="oportunidad_id"/>
-                            <field name="color" widget="color_picker"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
                             <field name="active" invisible="1"/>
                         </group>
                     </group>

@@ -6,9 +6,9 @@
         <field name="model">persona.tag</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="nombre"/>
+                <field name="name"/>
                 <field name="color" widget="color_picker"/>
-                <field name="activo" widget="boolean_toggle"/>
+                <field name="active" widget="boolean_toggle"/>
             </tree>
         </field>
     </record>
@@ -21,11 +21,11 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="nombre"/>
+                            <field name="name"/>
                         </group>
                         <group>
                             <field name="color" widget="color_picker"/>
-                            <field name="activo" widget="boolean_toggle"/>
+                            <field name="active" widget="boolean_toggle"/>
                         </group>
                     </group>
                 </sheet>
