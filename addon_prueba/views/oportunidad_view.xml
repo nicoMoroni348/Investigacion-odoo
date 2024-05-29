@@ -27,6 +27,27 @@
         </field>
     </record>
 
+    <record id="view_oportunidad_activity" model="ir.ui.view">
+        <field name="name">oportunidad.activity</field>
+        <field name="model">oportunidad</field>
+        <field name="arch" type="xml">
+            <activity string="Oportunidades">
+                <field name="persona_id"/>
+                <field name="custom_id"/>
+                <templates>
+                    <div t-name="activity-box">
+                        <img t-att-src="activity_image('persona', 'foto', record.persona_id.raw_value)"
+                             t-att-title="record.persona_id.value" t-att-alt="record.persona_id.value"/>
+                        <div>
+                            <field name="persona_id" display="full"/>
+                            <field name="custom_id" display="full"/>
+                        </div>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>
+
 
     <record id="view_oportunidad_tree" model="ir.ui.view">
         <field name="name">oportunidad.tree</field>
@@ -110,7 +131,7 @@
                                     confirm="Estas seguro de ir a la acción persona?"
                                     help="Al clickear te dirigirás a la lista de personas"
                                     type="action" string="Accion"/>
-                            <field name="esconder_campo" />
+                            <field name="esconder_campo"/>
                             <!--    groups="base.group_no_one"  ->  para activarlo en modo dev -->
                         </group>
                         <p/>
@@ -122,7 +143,7 @@
                         <!-- Ventana Descripción en HTML -->
                         <page string="Descripción" name="descripcion">
                             <field name="descripcion" placeholder="Ingrese la descripción de la oportunidad"
-                                   options="{'collaborative': true, 'resizable': true}"/> <!-- para que se actualicen los cambios en tiempo real y tenga tamaño editable -->
+                                   options="{'collaborative': true, 'resizable': true, 'codeview': true}"/> <!-- para que se actualicen los cambios en tiempo real y tenga tamaño editable -->
                         </page>
 
                         <!-- Ventana Personas -> en un futuro implementarlo como un tree -->
@@ -131,8 +152,9 @@
                                 <tree editable="bottom">
                                     <field name="product_id"/>
                                     <field name="cantidad"/>
-<!--                                    <field name="precio_unitario" />-->
-                                    <field name="precio_unitario" attrs="{'column_invisible': [('parent.esconder_campo', '=', True)]}"/>
+                                    <!--                                    <field name="precio_unitario" />-->
+                                    <field name="precio_unitario"
+                                           attrs="{'column_invisible': [('parent.esconder_campo', '=', True)]}"/>
                                     <field name="precio_final"/>
                                 </tree>
                                 <form>
@@ -165,7 +187,7 @@
         <field name="name">Oportunidades</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">oportunidad</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,activity</field>
         <field name="context">{}</field> <!-- 'search_default_group_by_estado': 1 -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
