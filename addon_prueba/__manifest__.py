@@ -13,6 +13,7 @@
                 ],
     'data': [
         'security/ir.model.access.csv',
+        'wizard/cancelar_oportunidad_view.xml',
         'views/menu.xml',
         'views/persona_view.xml',
         'views/persona_tag_view.xml',

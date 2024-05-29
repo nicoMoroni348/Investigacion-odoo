@@ -20,7 +20,11 @@
               name="Configuracion"
               sequence="3"
     />
-
-
+    <menuitem id="menu_cancelar_oportunidad"
+              parent="menu_oportunidades"
+              name="Cancelacion"
+              action="action_cancelar_oportunidad"
+              sequence="20"
+    />
 
 </odoo>
