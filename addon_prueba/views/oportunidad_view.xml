@@ -90,10 +90,9 @@
                     <button name="finalizar_oportunidad"
                             help="Al clickear se finalizará la oportunidad"
                             type="object" string="Finalizar"/>
-                    <button name="cancelar_oportunidad"
-                            confirm="Estas seguro de que quieres cancelar la oportunidad?"
+                    <button name="%(addon_prueba.action_cancelar_oportunidad)d"
                             help="Al clickear se cancelará la oportunidad"
-                            type="object" string="Cancelar" class="oe_highlight"
+                            type="action" string="Cancelar" class="oe_highlight"
                             data-hotkey="z"/>
                     <button name="suspender_oportunidad"
                             confirm="Estas seguro de que quieres suspender la oportunidad?"

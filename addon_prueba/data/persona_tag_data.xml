@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="persona_tag_verde" model="persona.tag">
+        <field name="name">Verde</field>
+    </record>
+    <record id="persona_tag_rojo" model="persona.tag">
+        <field name="name">Rojo</field>
+    </record>
+    <record id="persona_tag_azul" model="persona.tag">
+        <field name="name">Azul</field>
+    </record>
+    <record id="persona_tag_amarillo" model="persona.tag">
+        <field name="name">Amarillo</field>
+    </record>
+</odoo>
