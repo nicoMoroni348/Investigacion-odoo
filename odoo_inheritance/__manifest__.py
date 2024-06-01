@@ -15,10 +15,15 @@
     'category': 'Sin Categoría',
     'version': '1.0',
 
-    'depends': ['sale'],
+    'depends': [
+        'sale', 'sale_management'
+    ],
 
     'data': [
+        'views/sale_order_view.xml',
     ],
     'demo': [
     ],
+    'license': 'LGPL-3',  # Esta es la que viene por defecto
+
 }
