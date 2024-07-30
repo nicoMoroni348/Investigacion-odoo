@@ -14,7 +14,6 @@
                 <filter name="filtro_hombres" string="Hombres" help="Filtrado por hombres"
                         domain="[('gender', '=', 'Hombre')]"/>
                 <!-- El domain es el que realiza el filtro-->
-                <!-- acá por alguna razón si pongo hombre en minúscula no me lo acepta-->
                 <!-- <separator/> esta etiqueta evita que cuando toques los 2 filtros a la vez, se aplique un OR, sino que se aplica un AND -->
                 <filter name="filtro_mujeres" string="Mujeres" help="Filtrado por mujeres"
                         domain="[('gender', '=', 'Mujer')]"/>

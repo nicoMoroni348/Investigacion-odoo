@@ -57,19 +57,30 @@ class Oportunidad(models.Model):
         string="Responsable"
     )
 
-    # Para lo de google maps
-    latitud = fields.Float(string="Latitud")
-    longitud = fields.Float(string="Longitud")
+    latitud = fields.Float(
+        string="Latitud"
+    )
+
+    longitud = fields.Float(
+        string="Longitud"
+    )
 
     # One2Many field
-    nodo_lines_ids = fields.One2many('nodo.lines', 'id_oportunidad', string="Nodos")
-    esconder_campo = fields.Boolean(string="Esconder campo", default=False)
+    nodo_lines_ids = fields.One2many(
+        'nodo.lines', 'id_oportunidad', string="Nodos"
+    )
 
+    esconder_campo = fields.Boolean(
+        string="Esconder campo", default=False
+    )
+
+    # MÉTODOS
     @api.onchange('persona_id')
     def onchange_persona_id(self):
         self.ref = self.persona_id.ref  # Rellena el código pero no de la misma forma que el many2one,
         # este lo autocompleta de forma más personalizada
 
+    # Botón de testing -> efecto "arcoíris"
     def action_test(self):
         print("TEST CORRECTO")
         return {
@@ -80,6 +91,7 @@ class Oportunidad(models.Model):
             }
         }
 
+    # Botones Cambio de estado de la oportunidad
     def cancelar_oportunidad(self):
         for rec in self:  # Para evitar el error singleton
             rec.estado = 'cancelada'
@@ -101,11 +113,25 @@ class nodoLines(models.Model):
     _name = "nodo.lines"
     _description = "Linea de nodos"
 
-    product_id = fields.Many2one('product.product', required=True)
-    cantidad = fields.Integer(string="Cantidad", default=1)
-    precio_unitario = fields.Float(related="product_id.list_price", string="Precio Unitario")
-    precio_final = fields.Float(string="Precio Final", compute="_calcular_precio", store=True)
-    id_oportunidad = fields.Many2one('oportunidad', string="Oportunidad")
+    product_id = fields.Many2one(
+        'product.product', required=True
+    )
+
+    cantidad = fields.Integer(
+        string="Cantidad", default=1
+    )
+
+    precio_unitario = fields.Float(
+        related="product_id.list_price", string="Precio Unitario"
+    )
+
+    precio_final = fields.Float(
+        string="Precio Final", compute="_calcular_precio", store=True
+    )
+
+    id_oportunidad = fields.Many2one(
+        'oportunidad', string="Oportunidad"
+    )
 
     @api.depends('product_id', 'cantidad')
     def _calcular_precio(self):

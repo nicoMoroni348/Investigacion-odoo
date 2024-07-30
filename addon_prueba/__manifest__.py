@@ -15,6 +15,7 @@
         'security/ir.model.access.csv',
         'data/persona_tag_data.xml',
         'data/persona.tag.csv',
+        'data/sequence_data.xml',
         'wizard/cancelar_oportunidad_view.xml',
         'views/menu.xml',
         'views/persona_view.xml',
