@@ -9,6 +9,7 @@ class Persona(models.Model):
                 'mail.activity.mixin',
                 ]  # esto lo agrego para el chatter
     _description = 'Este es mi primer modelo'
+    _rec_name = 'ref'
 
     name = fields.Char(
         string='Nombre', required=True, tracking=True
@@ -67,3 +68,11 @@ class Persona(models.Model):
     def write(self, vals):
         return super(Persona, self).write(vals)
 
+    def name_get(self):
+        persona_list = []
+        for rec in self:
+            if rec.name and rec.ref:
+                name = rec.name + " - " + rec.ref
+                persona_list.append((rec.id, name))  # Fijate que se agrega una tupla
+
+        return persona_list

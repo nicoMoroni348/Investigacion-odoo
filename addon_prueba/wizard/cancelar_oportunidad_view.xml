@@ -11,7 +11,9 @@
                         <field name="oportunidad_id"/>
                         <field name="motivo"/>
                     </group>
+
                     <group>
+                        <field name="fecha_cancelacion"/>
                     </group>
                 </group>
                 <footer>
