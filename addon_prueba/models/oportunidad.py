@@ -74,6 +74,10 @@ class Oportunidad(models.Model):
         string="Esconder campo", default=False
     )
 
+    id_servicio = fields.Char(
+        string="ID Servicio", readonly=True
+    )
+
     # MÉTODOS
     @api.onchange('persona_id')
     def onchange_persona_id(self):
@@ -108,6 +112,12 @@ class Oportunidad(models.Model):
         for rec in self:  # Para evitar el error singleton
             rec.estado = 'finalizada'
 
+    @api.model_create_multi
+    def create(self, vals):
+        # Completa el campo id_servicio con el nombre del cliente, el id de la oportunidad y la fecha separados por "_"
+        vals[0]['id_servicio'] = vals[0]['persona_genero'][1] + "_" + vals[0]['custom_id'] + "_" + str(fields.Date.context_today(self))
+        print(vals[0]['id_servicio'])
+        return super(Oportunidad, self).create(vals)
 
 class nodoLines(models.Model):
     _name = "nodo.lines"

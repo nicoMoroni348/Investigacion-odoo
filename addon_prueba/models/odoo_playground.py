@@ -14,6 +14,9 @@ class OdooPlayGround(models.Model):
     #  - self.env.is_superuser: Return whether the environment is in superuser mode
     #  - self.env.company: Return the current company (as an instance)
     #  - self.env.companies: Return a recordset of the enabled companies by the user
+    #  - self.env.cr: Return the current cursor, this is the database cursor that you can use to perform sql queries 
+    #  - self.env.uid: Return the current user id
+    #  - self.env.context: Return the current context, this means the context that is used in the current action like the active_id, active_model, active_ids, lang, tz, uid, company, etc. 
     #  - self.env.lang: Return the current language code\n\n\n\n"""
 
     model_id = fields.Many2one(

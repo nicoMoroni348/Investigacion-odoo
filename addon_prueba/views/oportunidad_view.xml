@@ -109,11 +109,11 @@
                         <group>
                             <field name="custom_id" readonly="False" default_focus="1"/>
                             <field name="fecha_oportunidad"/>
-                            <field name="prioridad" widget="priority"/>
                         </group>
                         <group>
                             <field name="persona_id"/>
                             <field name="persona_genero" readonly="False"/>
+                            <field name="id_servicio"/>
                         </group>
                         <group string="Coordenadas" style="font-size: 12px; color: #666;">
                             <field name="latitud" label="Latitud" style="width: 100px;"/>
