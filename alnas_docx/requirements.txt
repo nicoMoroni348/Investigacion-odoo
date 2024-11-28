@@ -1,6 +1,0 @@
-docxtpl
-docxcompose
-html2text
-num2words
-Babel
-htmldocx

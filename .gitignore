@@ -1,0 +1,5 @@
+odoo_pg_pass
+odoo-db-data
+odoo-web-data
+config
+*.conf
