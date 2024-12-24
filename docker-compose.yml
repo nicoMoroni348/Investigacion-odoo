@@ -1,41 +1,45 @@
 services:
-  odoo:
-    build: .
-    container_name: odoo-nico
-    links:
-      - db:db
-    depends_on:
-      - db
-    ports:
-      - '8070:8069'
+  odoo_db_nico:
+    image: postgres:16.3
+    container_name: odoo_db_nico
+    restart: always
     volumes:
-      - odoo-web-data:/var/lib/odoo
-      - ./config:/etc/odoo
-      - ./addons:/mnt/extra-addons
-    environment:
-      - PASSWORD_FILE=/run/secrets/postgresql_password
-    secrets:
-      - postgresql_password
-    # command: > # Para actualizar un modulo en caso de error
-    #  odoo -u <<modulo>> -d <<base de datos>>
-  db:
-    image: postgres:15
-    container_name: db-postgres-nico
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD_FILE=/run/secrets/postgresql_password
-      - POSTGRES_USER=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata
+      - type: bind
+        source: ./odoo-db-data
+        target: /var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - nicotina
     ports:
       - '5433:5432'
+
+  odoo_app_nico:
+    build: .
+    ports:
+      - '8070:8069'
+    env_file:
+      - .env
+    container_name: odoo_app_nico
+    restart: always
+    depends_on:
+      - odoo_db_nico
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
-    secrets:
-      - postgresql_password
+      - type: bind
+        source: ./odoo-web-data
+        target: /var/lib/odoo
+      - type: bind
+        source: ./config
+        target: /etc/odoo
+      - type: bind
+        source: ./addons
+        target: /mnt/extra-addons
+    networks:
+      - nicotina
+
+networks:
+  nicotina:
+
 volumes:
   odoo-web-data:
   odoo-db-data:
-
-secrets:
-  postgresql_password:
-    file: odoo_pg_pass

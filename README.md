@@ -1,18 +1,14 @@
 # primeros-addons
 
-Repositorio de trabajo para crear y probar nuestros primeros addons en la versión 15 de odoo
+Repositorio de trabajo para crear mis primeros addons y desarrollos en odoo.
 
-## Odoo levantado como servicio
+## Comandos útiles de docker
 
-En este orden:
+docker compose down --rmi all --volumes --remove-orphans
 
-./odoo-bin -c ../proyecto-odoo/odoo.conf -s --stop-after-init
+docker compose up --build -d --force-recreate
 
-./odoo-bin -c ../proyecto-odoo/odoo.conf -i nico
+## Consideraciones
 
-Y de ahí en más usas esta:
-./odoo-bin -c ../proyecto-odoo/odoo.conf
-
-## Odoo levantado como contenedor
-
-docker compose down --rmi all --remove-orphans && docker compose up --build -d
+Para poder levantar odoo con esta configuración te hace falta crear en local las carpetas "*odoo-db-data*", "*odoo-web-data*", el archivo "*.env*" y el archivo "*odoo.conf*" (este último dentro de la carpeta config/, el resto debe ir en la raiz del repositorio).
+Importante: la carpeta "*odoo-web-data*" debe tener permisos de escritura.

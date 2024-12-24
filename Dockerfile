@@ -14,6 +14,7 @@ RUN apt-get update
 # Instala las demás dependencias necesarias
 RUN apt-get update && apt-get install -y --no-install-recommends \
   libreoffice \
+  git \
   python3-pip \
   build-essential \
   libssl-dev \
