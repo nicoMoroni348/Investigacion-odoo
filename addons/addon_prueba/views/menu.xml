@@ -5,20 +5,25 @@
               sequence="0"
               web_icon="addon_prueba,static/description/arg.png"
     />
-    <menuitem id="menu_detalle_personas"
-              parent="menu_prueba"
-              name="Detalle Personas"
-              sequence="2"
-    />
     <menuitem id="menu_oportunidades"
               parent="menu_prueba"
               name="Oportunidades"
               sequence="1"
     />
+    <menuitem id="menu_detalle_personas"
+              parent="menu_prueba"
+              name="Detalle Personas"
+              sequence="2"
+    />
     <menuitem id="menu_configuracion"
               parent="menu_prueba"
               name="Configuracion"
               sequence="3"
+    />
+    <menuitem id="menu_estudiantes"
+              parent="menu_prueba"
+              name="Estudiantes"
+              sequence="4"
     />
     <menuitem id="menu_cancelar_oportunidad"
               parent="menu_oportunidades"

@@ -22,6 +22,7 @@
         'views/persona_tag_view.xml',
         'views/oportunidad_view.xml',
         'views/persona_mujer_view.xml',
+        'views/estudiante_view.xml',
         'views/odoo_playground_view.xml',
         'report/oportunidad_report.xml',
         'report/oportunidad_template.xml',

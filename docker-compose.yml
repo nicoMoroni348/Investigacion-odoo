@@ -36,6 +36,10 @@ services:
         target: /mnt/extra-addons
     networks:
       - nicotina
+    command: >
+      odoo -u addon_prueba -d pruebinhas
+
+
 
 networks:
   nicotina:
