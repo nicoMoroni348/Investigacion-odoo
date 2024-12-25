@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields # type: ignore
 
 class Estudiante(models.Model):
     _name = 'estudiante'

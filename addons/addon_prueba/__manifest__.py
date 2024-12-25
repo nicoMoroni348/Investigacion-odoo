@@ -13,6 +13,7 @@
                 ],
     'data': [
         'security/ir.model.access.csv',
+        'security/security_acces_data.xml',
         'data/persona_tag_data.xml',
         'data/persona.tag.csv',
         'data/sequence_data.xml',

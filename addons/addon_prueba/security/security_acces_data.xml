@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Asignamos una ID única para este access right 
+    y definimos el model como "ir.model.access" -->
+    <record id="perfil_estudiante_todos_persmisos" model="ir.model.access">
+        <field name="name">Permisos de usuario final</field>
+        <field name="model_id" ref="model_estudiante"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+    <!-- access.estudiante,access_estudiante,addon_prueba.model_estudiante,base.group_user,1,1,1,1 -->
+</odoo>
