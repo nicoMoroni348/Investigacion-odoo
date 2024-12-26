@@ -37,7 +37,7 @@ services:
     networks:
       - nicotina
     command: >
-      odoo -u addon_prueba -d pruebinhas
+      odoo -u $ADDON_NAME -d $DB_NAME
 
 
 

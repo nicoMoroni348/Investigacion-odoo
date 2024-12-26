@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-    <!-- Asignamos una ID única para este access right 
-    y definimos el model como "ir.model.access" -->
-    <record id="perfil_estudiante_todos_persmisos" model="ir.model.access">
+    <record id="acceso_perfil_estudiante_grupo" model="res.groups">
+        <field name="name">Perfil de estudiante</field>
+    </record>
+
+    <record id="perfil_estudiante_todos_permisos" model="ir.model.access">
         <field name="name">Permisos de usuario final</field>
         <field name="model_id" ref="model_estudiante" />
-        <field name="group_id" ref="base.group_user" />
+        <field name="group_id" ref="addon_prueba.acceso_perfil_estudiante_grupo" />
         <field name="perm_read">1</field>
         <field name="perm_create">1</field>
         <field name="perm_write">1</field>
         <field name="perm_unlink">1</field>
-    </record> <!-- Es el equivalente a:
-    access.estudiante,access_estudiante,addon_prueba.model_estudiante,base.group_user,1,1,1,1 -->
+    </record>
 
-    <record id="rule_see_own_oportunidades" model="ir.rule"> <!-- Importante definir el modelo "ir.rule"-->
+    <record id="rule_see_own_oportunidades" model="ir.rule">
         <field name="name">Ver sólo oportunidades propias</field>
-        <field name="model_id" ref="addon_prueba.model_oportunidad"/> <!-- Importante poner el model_id "addon_prueba"-->
+        <field name="model_id" ref="addon_prueba.model_oportunidad" />
         <field name="domain_force">[('responsable', '=', user.id)]</field>
     </record>
+
+    <record id="rule_see_own_estudiantes" model="ir.rule">
+        <field name="name">Ver sólo estudiantes propias</field>
+        <field name="model_id" ref="addon_prueba.model_estudiante" />
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('addon_prueba.acceso_perfil_estudiante_grupo'))]" />
+    </record>
+
+
 </odoo>
