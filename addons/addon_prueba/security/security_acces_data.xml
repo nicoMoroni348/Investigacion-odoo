@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
+
+    <record id="categoria_estudiantes" model="ir.module.category">
+        <field name="name">Estudiantes</field>
+    </record>
+
     <record id="acceso_perfil_estudiante_grupo" model="res.groups">
         <field name="name">Perfil de estudiante</field>
+        <field name="category_id" ref="addon_prueba.categoria_estudiantes"/>
+    </record>
+
+    <record id="acceso_perfil_estudiante_grupo2" model="res.groups">
+        <field name="name">Perfil de estudiante 2</field>
+        <field name="category_id" ref="addon_prueba.categoria_estudiantes"/>
     </record>
 
     <record id="perfil_estudiante_todos_permisos" model="ir.model.access">
