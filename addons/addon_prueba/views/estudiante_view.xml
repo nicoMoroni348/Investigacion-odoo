@@ -10,6 +10,7 @@
                 <field name="edad"/>
                 <field name="email"/>
                 <field name="phone"/>
+                <field name="create_uid"/>
             </tree>
         </field>
     </record>
