@@ -10,6 +10,7 @@
     'depends': ['mail',
                 'phone_validation',
                 'product',
+                'web_responsive',
                 ],
     'data': [
         'security/ir.model.access.csv',

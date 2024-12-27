@@ -5,3 +5,7 @@ access.nodo.lines,access_nodo_lines,addon_prueba.model_nodo_lines,base.group_use
 access.persona.tag,access_persona_tag,addon_prueba.model_persona_tag,base.group_user,1,1,1,1
 access.cancelar.oportunidad.wizard,access_cancelar_oportunidad_wizard,addon_prueba.model_cancelar_oportunidad_wizard,base.group_user,1,1,1,1
 access.odoo.playground,access_odoo_playground,addon_prueba.model_odoo_playground,base.group_user,1,1,1,1
+access.estudiante_basico,Acceso Base,addon_prueba.model_estudiante,base.group_user,0,0,0,0
+access.estudiante_nivel_bajo,Acceso Nivel Bajo,addon_prueba.model_estudiante,addon_prueba.grupo_de_acceso_nivel_bajo_estudiantes,1,0,0,0
+access.estudiante_nivel_medio,Acceso Nivel Medio,addon_prueba.model_estudiante,addon_prueba.grupo_de_acceso_nivel_medio_estudiantes,1,1,1,0
+access.estudiante_nivel_alto,Acceso Nivel Alto,addon_prueba.model_estudiante,addon_prueba.grupo_de_acceso_nivel_alto_estudiantes,1,1,1,1

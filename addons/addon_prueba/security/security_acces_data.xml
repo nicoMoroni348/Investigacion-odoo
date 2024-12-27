@@ -11,9 +11,33 @@
         <field name="category_id" ref="addon_prueba.categoria_estudiantes"/>
     </record>
 
-    <record id="acceso_perfil_estudiante_grupo2" model="res.groups">
-        <field name="name">Perfil de estudiante 2</field>
-        <field name="category_id" ref="addon_prueba.categoria_estudiantes"/>
+    <record id="categoria_estudiantes_jerarquia_padre" model="ir.module.category">
+        <field name="name">Jerarquía de estudiantes</field>
+    </record>
+
+    <record id="categoria_estudiantes_jerarquia_hijo" model="ir.module.category">
+        <!-- Esto es una subcategoría -->
+        <field name="name">Estudiantes</field>
+        <field name="parent_id" ref="addon_prueba.categoria_estudiantes_jerarquia_padre" />
+    </record>
+
+    <record id="grupo_de_acceso_nivel_bajo_estudiantes" model="res.groups">
+        <field name="name">Estudiantes nivel Bajo</field>
+        <field name="category_id" ref="addon_prueba.categoria_estudiantes_jerarquia_hijo" />
+    </record>
+
+    <record id="grupo_de_acceso_nivel_medio_estudiantes" model="res.groups">
+        <field name="name">Estudiantes nivel Medio</field>
+        <field name="category_id" ref="addon_prueba.categoria_estudiantes_jerarquia_hijo" />
+        <field name="implied_ids"
+            eval="[(6, 0, [ref('addon_prueba.grupo_de_acceso_nivel_bajo_estudiantes')])]" />
+    </record>
+
+    <record id="grupo_de_acceso_nivel_alto_estudiantes" model="res.groups">
+        <field name="name">Estudiantes nivel Alto</field>
+        <field name="category_id" ref="addon_prueba.categoria_estudiantes_jerarquia_hijo" />
+        <field name="implied_ids"
+            eval="[(6, 0, [ref('addon_prueba.grupo_de_acceso_nivel_medio_estudiantes')])]" />
     </record>
 
     <record id="perfil_estudiante_todos_permisos" model="ir.model.access">
