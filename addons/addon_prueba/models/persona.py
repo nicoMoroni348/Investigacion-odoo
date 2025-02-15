@@ -1,5 +1,7 @@
 from odoo import api, fields, models
 from datetime import date
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class Persona(models.Model):
@@ -76,3 +78,6 @@ class Persona(models.Model):
                 persona_list.append((rec.id, name))  # Fijate que se agrega una tupla
 
         return persona_list
+    
+    def click_me_button(self):
+        _logger.info("LO HAS CLICKEADO")

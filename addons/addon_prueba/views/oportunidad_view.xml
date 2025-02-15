@@ -60,7 +60,7 @@
                 <field name="id" groups="addon_prueba.grupo_de_acceso_nivel_alto_estudiantes"/>
                 <field name="create_uid" groups="addon_prueba.grupo_de_acceso_nivel_alto_estudiantes"/>
                 <field name="create_date" groups="addon_prueba.grupo_de_acceso_nivel_alto_estudiantes"/>
-                <field name="custom_id"/>
+                <field name="custom_id" width="100px"/>
                 <field name="estado"
                        widget="badge"
                        decoration-success="estado == 'finalizada'"

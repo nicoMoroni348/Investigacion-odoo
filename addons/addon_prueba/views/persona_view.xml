@@ -46,6 +46,11 @@
         <field name="model">persona</field>
         <field name="arch" type="xml">
             <tree>
+            <header>
+                <button name="click_me_button" string="Click me!" type="object"/>
+                <button name="click_me_button" string="Duplicate Click me!" type="object" /> 
+                <!-- display="always" -->
+            </header>
                 <field name="id"/>
                 <field name="ref"/>
                 <field name="name" string="Nombre de la persona"/> <!-- si no pones nada usa el del modelo (Nombre) -->

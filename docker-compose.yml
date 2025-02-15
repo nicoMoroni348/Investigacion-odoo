@@ -39,8 +39,6 @@ services:
     command: >
       odoo -u $ADDON_NAME -d $DB_NAME
 
-
-
 networks:
   nicotina:
 

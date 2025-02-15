@@ -11,6 +11,7 @@
                 'phone_validation',
                 'product',
                 'web_responsive',
+                'website',
                 ],
     'data': [
         'security/ir.model.access.csv',
@@ -26,6 +27,7 @@
         'views/persona_mujer_view.xml',
         'views/estudiante_view.xml',
         'views/odoo_playground_view.xml',
+        'views/template.xml',
         'report/oportunidad_report.xml',
         'report/oportunidad_template.xml',
     ],

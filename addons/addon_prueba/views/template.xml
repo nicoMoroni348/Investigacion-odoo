@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <template id="estudiantes_page" name="Estudiantes">
+        <t t-call="website.layout">
+            <div class="container"> Hola mundo!!! 
+                <table class="table table-bordered"> <!-- Importante usar la clase para que se vea bien -->
+                    <thead> <!-- Table head -->
+                        <tr> <!-- Table row -->
+                            <td> <!-- Table data -->
+                                Nombre
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody> <!-- Cuerpo de la tabla -->
+                        <t t-foreach="estudiantes" t-as="estudiante"> <!-- Ciclo "for" que recorre los estudiantes-->
+                            <tr>
+                                <td>
+                                    <t t-esc="estudiante.name" /> <!-- Muestra el nombre de cada estudiante -->
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+</odoo>
