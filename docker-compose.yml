@@ -1,29 +1,34 @@
 services:
-  odoo_db_nico:
+  odoo_db:
     image: postgres:16.3
-    container_name: odoo_db_nico
+    container_name: ${DB_CONTAINER_NAME}
     restart: always
     volumes:
       - type: bind
         source: ./odoo-db-data
         target: /var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
+    environment:
+      - TZ=America/Argentina/Cordoba
     networks:
-      - nicotina
+      - odoo_network
     ports:
-      - '5433:5432'
+      - "127.0.0.1:${POSTGRES_PORT}:5432"
 
-  odoo_app_nico:
+  odoo_app:
     build: .
-    ports:
-      - '8070:8069'
-    env_file:
-      - .env
-    container_name: odoo_app_nico
+    container_name: ${ODOO_CONTAINER_NAME}
     restart: always
     depends_on:
-      - odoo_db_nico
+      - odoo_db
+    ports:
+      - "${ODOO_PORT}:8069"
+    env_file:
+      - .env
+    environment:
+      - TZ=America/Argentina/Cordoba
     volumes:
       - type: bind
         source: ./odoo-web-data
@@ -34,14 +39,16 @@ services:
       - type: bind
         source: ./addons
         target: /mnt/extra-addons
+      - /etc/localtime:/etc/localtime:ro
     networks:
-      - nicotina
+      - odoo_network
     # command: >
-      # odoo -u $ADDON_NAME -d $DB_NAME
+    #   odoo -u ${ADDON_NAME} -d ${DB_NAME}
 
 networks:
-  nicotina:
+  odoo_network:
+    name: ${COMPOSE_PROJECT_NAME}_odoo_network
 
 volumes:
-  odoo-web-data:
   odoo-db-data:
+  odoo-web-data:

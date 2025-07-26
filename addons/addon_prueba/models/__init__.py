@@ -1,1 +1,0 @@
-from . import persona, oportunidad, persona_tag, odoo_playground, estudiante

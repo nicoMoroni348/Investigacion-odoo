@@ -1,32 +1,26 @@
 # Usa la imagen oficial de Odoo como base
-FROM odoo:16.0
+FROM odoo:17.0-20250131
 
 # Cambia al usuario root para instalar paquetes
 USER root
 
-# Elimina cualquier repositorio PostgreSQL adicional para evitar conflictos
-RUN rm -f /etc/apt/sources.list.d/postgresql.list && \
-  sed -i '/^deb .*postgresql/d' /etc/apt/sources.list
-
-# Actualiza los repositorios
-RUN apt-get update
-
-# Instala las demás dependencias necesarias
-RUN apt-get update && apt-get install -y --no-install-recommends \
-  libreoffice \
-  git \
-  python3-pip \
-  build-essential \
-  libssl-dev \
-  libffi-dev \
-  python3-dev \
-  swig \
-  libxml2-dev \
-  libxslt1-dev \
-  zlib1g-dev \
-  libjpeg-dev && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+# Limpiar repos de PostgreSQL y luego actualizar e instalar en la misma capa
+RUN rm -f /etc/apt/sources.list.d/postgresql.list \
+  && sed -i '/^deb .*postgresql/d' /etc/apt/sources.list \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends \
+       python3-pip \
+       iputils-ping \
+       build-essential \
+       libssl-dev \
+       libffi-dev \
+       python3-dev \
+       swig \
+       libxml2-dev \
+       libxslt1-dev \
+       zlib1g-dev \
+       libjpeg-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 # Copia el archivo de dependencias (requirements.txt) al contenedor
 COPY addons/requirements.txt /tmp/requirements.txt

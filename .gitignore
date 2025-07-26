@@ -18,8 +18,9 @@ __pycache__
 
 
 # Environments
-.env
-.venv
+*.env
+.env.*
+!.env.example
 env/
 venv/
 ENV/
