@@ -36,8 +36,8 @@ services:
         target: /mnt/extra-addons
     networks:
       - nicotina
-    command: >
-      odoo -u $ADDON_NAME -d $DB_NAME
+    # command: >
+      # odoo -u $ADDON_NAME -d $DB_NAME
 
 networks:
   nicotina:

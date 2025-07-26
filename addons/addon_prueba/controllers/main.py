@@ -11,3 +11,15 @@ class Estudiantes(http.Controller):
         return request.render("addon_prueba.estudiantes_page", {
             'estudiantes': estudiantes
         }) 
+    
+
+class Personas(http.Controller):
+    @http.route('/personas', website=True, auth='public')
+    def personas(self, **kw):
+        personas = request.env['persona'].sudo().search([])
+        values = {
+            'personas': personas,
+            'otro_valor': "Acá hay otro valor random que paso por parámetro"
+        }
+        template = "addon_prueba.personas_page"
+        return request.render(template, values) 

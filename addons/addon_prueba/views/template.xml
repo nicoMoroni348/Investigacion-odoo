@@ -27,4 +27,29 @@
         </t>
     </template>
 
+    <template id="personas_page" name="Personas">
+        <t t-call="website.layout">
+            <div class="container">
+                <table class="table table-bordered">
+                    <thead> 
+                        <tr> 
+                            <td>
+                                Nombre
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="personas" t-as="persona">
+                            <tr>
+                                <td>
+                                    <t t-esc="persona.name" /> 
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
 </odoo>
